@@ -5,6 +5,7 @@ import { useEffect } from "react";
 
 function App() {
   const [movies, setMovies] = React.useState("");
+  const [randomMovie, setRandomMovie] = React.useState("");
 
   //data to acess the movie API
   const options = {
@@ -16,14 +17,17 @@ function App() {
     },
   };
 
+  //get a random number from 1 to 30
+
+  const randomPage = Math.floor(Math.random() * 30);
+
   //update Movies state with a random page of movies, from the top 50 pages of most popular movies at a given moment
   const searchMovies = async function () {
     const response = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=1`,
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}`,
       options
     );
     const data = await response.json();
-    console.log(data);
     setMovies(data.results);
   };
   console.log(movies);
@@ -32,7 +36,11 @@ function App() {
     searchMovies();
   }, []);
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    const randomSelection = Math.floor(Math.random() * movies.length);
+    setRandomMovie(movies[randomSelection]);
+    console.log(randomMovie);
+  };
 
   return (
     <div className="App">
