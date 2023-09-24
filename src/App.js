@@ -17,9 +17,9 @@ function App() {
     },
   };
 
-  //get a random number from 1 to 30
+  //get a random number from 1 to 25
 
-  const randomPage = Math.floor(Math.random() * 30);
+  const randomPage = Math.floor(Math.random() * 25 + 1);
 
   //update Movies state with a random page of movies, from the top 50 pages of most popular movies at a given moment
   const searchMovies = async function () {
@@ -32,22 +32,32 @@ function App() {
   };
   console.log(movies);
 
+  // call the api result in useEffect
   useEffect(() => {
     searchMovies();
-  }, []);
+  }, [randomMovie]);
 
+  //update randomMovie state on a click event
   const handleClick = () => {
     const randomSelection = Math.floor(Math.random() * movies.length);
     setRandomMovie(movies[randomSelection]);
-    console.log(randomMovie);
   };
 
+  console.log(randomMovie);
   return (
     <div className="App">
       <button className="generate" onClick={handleClick}>
         Generate Movie
       </button>
-      <MovieCard />
+      {randomMovie && (
+        <MovieCard
+          image={randomMovie.poster_path}
+          title={randomMovie.title}
+          rating={randomMovie.vote_average}
+          date={randomMovie.release_date}
+          overview={randomMovie.overview}
+        />
+      )}
     </div>
   );
 }

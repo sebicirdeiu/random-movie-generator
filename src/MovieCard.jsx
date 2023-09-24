@@ -2,15 +2,17 @@ import React from 'react'
 import './index.css'
 
 
-export default function MovieCard() {
-
+export default function MovieCard(props) {
+    const fullYear = props.date
+    //get year from full date
+    const year = fullYear.split('-')[0]
 
     return(
     <div className='movie'>
-        <img src="https://a.cdn-hotels.com/gdcs/production80/d479/d1f8aa42-09b8-473e-a8d5-44f4cf690635.jpg?impolicy=fcrop&w=800&h=533&q=medium" alt="Movie" className='poster' />
-        <h3 className='title'>Title</h3>
-        <h3 className='rating'>Rating</h3>
-        <h4 className='release-date'>Release date</h4>
+        <img src= {'https://image.tmdb.org/t/p/original/' + props.image}  alt="Movie" className='poster' /> 
+        <h3 className='title'>{props.title}</h3>
+        <h3 className='rating'>{props.rating}</h3>
+        <h4 className='release-date'>{year}</h4>
 
     </div>)
 }
