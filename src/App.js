@@ -13,6 +13,7 @@ function App() {
   const [url, setUrl] = React.useState(
     `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=27`
   );
+  const [genre, setGenre] = React.useState("");
 
   //data to acess the movie API
   const options = {
@@ -47,9 +48,15 @@ function App() {
   };
 
   console.log(randomMovie);
+
+  const handleGenreChange = (event) => {
+    setGenre(event);
+    console.log(genre);
+  };
+
   return (
     <div className="App">
-      <Form />
+      <Form genre={genre} handleGenreChange={handleGenreChange} />
       <button className="generate" onClick={handleClick}>
         Generate Movie
       </button>
