@@ -8,10 +8,10 @@ export function Form(props) {
         Genre:
         <select
           id="genre"
-          value={props.genre}
+          value={props.genre} // controled inputs
           onChange={(event) => props.handleGenreChange(event.target.value)}
         >
-          <option disabled>Gen</option>
+          <option value={""}>Oricare</option>
           {genresMap.map((genre) => {
             return (
               <option value={genre.id} key={genre.id}>

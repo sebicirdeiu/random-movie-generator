@@ -6,12 +6,12 @@ import { Form } from "./Form";
 
 function App() {
   //get a random number from 1 to 25
-  const randomPage = Math.floor(Math.random() * 25 + 1);
+  const randomPage = Math.floor(Math.random() * 20 + 1);
 
   const [movies, setMovies] = React.useState("");
   const [randomMovie, setRandomMovie] = React.useState("");
   const [url, setUrl] = React.useState(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=27`
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=`
   );
   const [genre, setGenre] = React.useState("");
 
@@ -36,13 +36,13 @@ function App() {
   // call the api retrieval function in useEffect
   useEffect(() => {
     searchMovies();
-  }, [randomMovie]);
+  }, [url]);
 
-  //update randomMovie state on a click event
+  //update randomMovie and url state on a click event to get a random movie of a specific genre
   const handleClick = () => {
     const randomSelection = Math.floor(Math.random() * movies.length);
     setUrl(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=27`
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=${genre}`
     ); // change the selected page with another random one and update state
     setRandomMovie(movies[randomSelection]);
   };
@@ -51,14 +51,12 @@ function App() {
 
   const handleGenreChange = (event) => {
     setGenre(event);
-    console.log(genre);
   };
-
   return (
     <div className="App">
       <Form genre={genre} handleGenreChange={handleGenreChange} />
       <button className="generate" onClick={handleClick}>
-        Generate Movie
+        Genereaza film
       </button>
       {randomMovie && (
         <MovieCard
