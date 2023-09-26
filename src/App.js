@@ -5,13 +5,13 @@ import { useEffect } from "react";
 import { Form } from "./Form";
 
 function App() {
-  //get a random number from 1 to 25
-  const randomPage = Math.floor(Math.random() * 20 + 1);
+  //get a random number from 1 to 20 (top 300 movies)
+  const randomPage = Math.floor(Math.random() * 15 + 1);
 
   const [movies, setMovies] = React.useState("");
   const [randomMovie, setRandomMovie] = React.useState("");
   const [url, setUrl] = React.useState(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=`
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}`
   );
   const [genre, setGenre] = React.useState("");
 
@@ -31,27 +31,29 @@ function App() {
     const data = await response.json();
     setMovies(data.results);
   };
-  console.log(movies);
 
   // call the api retrieval function in useEffect
   useEffect(() => {
     searchMovies();
+    console.log(url, movies, randomMovie);
   }, [url]);
 
-  //update randomMovie and url state on a click event to get a random movie of a specific genre
   const handleClick = () => {
-    const randomSelection = Math.floor(Math.random() * movies.length);
-    setUrl(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=${genre}`
-    ); // change the selected page with another random one and update state
-    setRandomMovie(movies[randomSelection]);
+    const newUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=${genre}`;
+
+    setUrl(newUrl);
   };
 
-  console.log(randomMovie);
+  //update random movie based on new movies state
+  useEffect(() => {
+    const randomSelection = Math.floor(Math.random() * movies.length);
+    setRandomMovie(movies[randomSelection]);
+  }, [movies]);
 
   const handleGenreChange = (event) => {
     setGenre(event);
   };
+
   return (
     <div className="App">
       <Form genre={genre} handleGenreChange={handleGenreChange} />

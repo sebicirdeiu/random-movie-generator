@@ -13,7 +13,7 @@ export default function MovieCard(props) {
         <h3 className='title'>Titlu: {props.title}</h3>
         <h3 className='rating'>Rating: {props.rating}</h3>
         <h4 className='release-date'>An: {year}</h4>
-        <p className='overview'>{props.overview}</p>
+        <p className='overview'><span className='overview-'>Descriere:</span>{props.overview}</p>
 
     </div>)
 }
