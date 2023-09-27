@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { Form } from "./Form";
 
 function App() {
-  //get a random number from 1 to 20 (top 300 movies)
-  const randomPage = Math.floor(Math.random() * 15 + 1);
+  //get a random number from 1 to 20 (top 400 movies)
+  const randomPage = Math.floor(Math.random() * 20 + 1);
 
   const [movies, setMovies] = React.useState("");
   const [randomMovie, setRandomMovie] = React.useState("");
@@ -14,6 +14,7 @@ function App() {
     `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}`
   );
   const [genre, setGenre] = React.useState("");
+  const [buttonIsClicked, setButtonIsClicked] = React.useState(false);
 
   //data to acess the movie API
   const options = {
@@ -42,13 +43,14 @@ function App() {
     const newUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=${randomPage}&with_genres=${genre}`;
 
     setUrl(newUrl);
+    setButtonIsClicked(true);
   };
 
   //update random movie based on new movies state
   useEffect(() => {
     const randomSelection = Math.floor(Math.random() * movies.length);
-    setRandomMovie(movies[randomSelection]);
-  }, [movies]);
+    buttonIsClicked && setRandomMovie(movies[randomSelection]);
+  }, [movies, buttonIsClicked]);
 
   const handleGenreChange = (event) => {
     setGenre(event);

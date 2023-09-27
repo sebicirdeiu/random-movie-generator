@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
 
 
 * {
@@ -8,34 +8,99 @@
   box-sizing: border-box;
 }
 
+html,body {
+  overflow: hidden;
+  height: 100%;
+}
+
 :root {
   --font-roboto: "Roboto Slab", serif;
-  --font-raleway: "Raleway", sans-serif;
+  
 }
 
 body {
-  font-family: var(--font-roboto);
-  background-color: #f8fcff; }
-
+  font-family: var(--font-roboto); 
+  height: 100vh;
+  width: 100%;
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+  
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 4rem;
+  color: antiquewhite;
 }
 
-.Form {
+.form {
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row ;
+  align-items: center;
+  margin-bottom: 15px;
 }
+
+.label {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.custom-select {
+  max-width: 200px;
+ margin-left: 10px;
+  position: relative;
+}
+
+select {
+  width: 160px;
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 1.1rem;
+  padding: 3px 6px;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
 
 .genre {
   display: flex;
   flex-direction: column;
 }
 
-.imdb {
+.movie {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.poster {
+  max-height: 750px;
 }

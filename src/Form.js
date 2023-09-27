@@ -4,8 +4,11 @@ import { genresMap } from "./GenreMap";
 export function Form(props) {
   return (
     <form className="form">
-      <label htmlFor="genre">
-        Genre:
+      <label htmlFor="genre" className="label">
+        Genul Filmului:
+      </label>
+
+      <div class="custom-select">
         <select
           id="genre"
           value={props.genre} // controled inputs
@@ -20,7 +23,7 @@ export function Form(props) {
             );
           })}
         </select>
-      </label>
+      </div>
     </form>
   );
 }
