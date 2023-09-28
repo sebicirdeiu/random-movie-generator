@@ -9,13 +9,15 @@ export default function MovieCard(props) {
 
     return(
     <div className='movie'>
-        <img src= {'https://image.tmdb.org/t/p/original/' + props.image}  alt="Movie" className='poster' /> 
-        <div className="stats">
-            <h2 className='title'> {props.title}</h2>
-            <h3 className='rating'>Rating: {props.rating}</h3>
-            <h4 className='release-date'>An: {year}</h4>
-            <p className='overview'><span className='overview-'>Descriere:</span>{props.overview}</p>
+        <div className="img-container">
+            <img src= {'https://image.tmdb.org/t/p/original/' + props.image}  alt="Movie" className='poster' />
+            <div className="stats">
+                <h2 className='title'> {props.title}</h2>
+                <h3 className='rating'>Rating: <span className="span">{props.rating}</span></h3>
+                <h4 className='release-date'>An: <span className='span'>{year}</span></h4>
+                <p className='overview'><span className='overview-'>Descriere: </span>{props.overview}</p>
+            </div>
         </div>
-
-    </div>)
+    </div>
+    )
 }

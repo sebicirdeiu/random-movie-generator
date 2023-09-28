@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { Form } from "./Form";
 
 function App() {
-  //get a random number from 1 to 20 (top 400 movies)
-  const randomPage = Math.floor(Math.random() * 20 + 1);
+  //get a random number from 1 to 15 (top 300 movies)
+  const randomPage = Math.floor(Math.random() * 15 + 1);
 
   const [movies, setMovies] = React.useState("");
   const [randomMovie, setRandomMovie] = React.useState("");
@@ -36,7 +36,6 @@ function App() {
   // call the api retrieval function in useEffect
   useEffect(() => {
     searchMovies();
-    console.log(url, movies, randomMovie);
   }, [url]);
 
   const handleClick = () => {
@@ -60,7 +59,7 @@ function App() {
     <div className="App">
       <Form genre={genre} handleGenreChange={handleGenreChange} />
       <button className="generate" onClick={handleClick}>
-        Genereaza film
+        Genereaza
       </button>
       {randomMovie && (
         <MovieCard

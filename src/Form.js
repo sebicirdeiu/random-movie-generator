@@ -8,7 +8,7 @@ export function Form(props) {
         Genul Filmului:
       </label>
 
-      <div class="custom-select">
+      <div className="custom-select">
         <select
           id="genre"
           value={props.genre} // controled inputs

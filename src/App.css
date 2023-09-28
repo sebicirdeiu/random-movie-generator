@@ -22,9 +22,10 @@ body {
   font-family: var(--font-roboto); 
   height: 100vh;
   width: 100%;
-  background-image: url(./images/background.jpg);
-  background-size: cover;
-  background-position: bottom;
+  background-image: url(./images/movie-large.jpg);
+  background-size:cover;
+  background-position:bottom left;
+  
 }
   
 .App {
@@ -43,7 +44,7 @@ body {
 }
 
 .label {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
@@ -95,12 +96,63 @@ select {
   flex-direction: column;
 }
 
-.movie {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.poster {
-  max-height: 750px;
-}
+.generate {
+  padding: 6px 12px;
+  border-style: none;
+  border-radius: 10px;
+  color: black;
+  background-color:#fff;
+  margin-bottom: 30px;
+  margin-top: 2px;
+  font-size: large; }
+
+  .generate:hover {
+    background-color: rgb(198, 38, 2);
+  }
+
+  .movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .img-container {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .stats {
+    max-width: 500px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 6px;
+  }
+
+  .poster {
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    margin-right: 30px;
+    position: relative;
+    max-height: 700px;
+
+  }
+
+  .span {
+    font-size: medium;
+    font-weight: 500;
+  }
+
+  .overview- {
+    font-size: large;
+    font-weight: 700;
+  }
+
+  .stats > * {
+    margin-bottom: 4px;
+  }
+
+  .title {
+    color: rgb(198, 38, 2);
+  }
