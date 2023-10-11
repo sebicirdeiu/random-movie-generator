@@ -212,7 +212,7 @@ select {
         
       .stats {
         width: 100%;
-        background-color: rgba(5, 5, 5, 0.5);
+        background-color: rgba(5, 5, 5, 0.65);
         padding: 5px 8px;
         margin-bottom: 1rem;
       }

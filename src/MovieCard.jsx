@@ -5,7 +5,7 @@ import './index.css'
 export default function MovieCard(props) {
     const fullYear = props.date
     //get year from full date
-    const year = fullYear.split('-')[0]
+    const year = props.year !== 'N/A' && fullYear.split('-')[0]
 
     return(
     <div className='movie'>
