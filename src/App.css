@@ -183,17 +183,14 @@ select {
         width: 100%;
         margin: 0;
        position: relative;
-      
       }
 
       select {
         width: 100%;
         padding: 0.3rem 0;
         padding-left: 1rem;
-        
   
       }
-
 
       select > option {
         font-size: 1rem;
@@ -214,7 +211,7 @@ select {
       }
         
       .stats {
-        max-width: 94%;
+        width: 100%;
         background-color: rgba(5, 5, 5, 0.5);
         padding: 5px 8px;
         margin-bottom: 1rem;

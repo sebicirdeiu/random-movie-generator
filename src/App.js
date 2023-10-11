@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { Form } from "./Form";
 
 function App() {
-  //get a random number from 1 to 15 (top 300 movies)
-  const randomPage = Math.floor(Math.random() * 15 + 1);
+  //get a random number from 1 to 20 (top 400 movies)
+  const randomPage = Math.floor(Math.random() * 20 + 1);
 
   const [movies, setMovies] = React.useState("");
   const [randomMovie, setRandomMovie] = React.useState("");
@@ -26,7 +26,7 @@ function App() {
     },
   };
 
-  //update Movies state with a random page of movies, from the top 50 pages of most popular movies at a given moment
+  //update Movies state with a random page of movies, from the top 20 pages of most popular movies at a given moment
   const searchMovies = async function () {
     const response = await fetch(url, options);
     const data = await response.json();
