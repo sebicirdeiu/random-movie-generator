@@ -1,6 +1,6 @@
 {
   "name": "random-movie-generator",
-  "homepage": "https://github.com/sebicirdeiu/random-movie-generator",
+  "homepage": "https://sebicirdeiu.github.io/random-movie-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
