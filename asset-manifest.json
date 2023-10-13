@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/sebicirdeiu/random-movie-generator/static/css/main.694e8df9.css",
-    "main.js": "/sebicirdeiu/random-movie-generator/static/js/main.44018b78.js",
-    "static/media/movie-large.jpg": "/sebicirdeiu/random-movie-generator/static/media/movie-large.da771743908c32ad103a.jpg",
-    "index.html": "/sebicirdeiu/random-movie-generator/index.html",
-    "main.694e8df9.css.map": "/sebicirdeiu/random-movie-generator/static/css/main.694e8df9.css.map",
-    "main.44018b78.js.map": "/sebicirdeiu/random-movie-generator/static/js/main.44018b78.js.map"
+    "main.css": "/random-movie-generator/static/css/main.559ac8df.css",
+    "main.js": "/random-movie-generator/static/js/main.44018b78.js",
+    "static/media/movie-large.jpg": "/random-movie-generator/static/media/movie-large.da771743908c32ad103a.jpg",
+    "index.html": "/random-movie-generator/index.html",
+    "main.559ac8df.css.map": "/random-movie-generator/static/css/main.559ac8df.css.map",
+    "main.44018b78.js.map": "/random-movie-generator/static/js/main.44018b78.js.map"
   },
   "entrypoints": [
-    "static/css/main.694e8df9.css",
+    "static/css/main.559ac8df.css",
     "static/js/main.44018b78.js"
   ]
 }
