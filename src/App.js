@@ -15,7 +15,7 @@ function App() {
   );
   const [genre, setGenre] = React.useState("");
   const [buttonIsClicked, setButtonIsClicked] = React.useState(false);
-
+  const [favorites, setFavorites] = React.useState([]);
   //data to acess the movie API
   const options = {
     method: "GET",
@@ -55,11 +55,27 @@ function App() {
     setGenre(event);
   };
 
+  const addToFavorites = (event) => {
+    event.preventDefault();
+    // prevent adding same movie twice
+    if (!favorites.some((movie) => movie.id === randomMovie.id)) {
+      setFavorites((prevFavorites) => [...prevFavorites, randomMovie]);
+    }
+  };
+  useEffect(() => {
+    console.log(favorites);
+  }, [favorites]);
+
+  const displayFavorites = () => {};
+
   return (
     <div className="App">
       <Form genre={genre} handleGenreChange={handleGenreChange} />
       <button className="generate" onClick={handleClick}>
         Genereaza
+      </button>
+      <button className="favorites" onClick={displayFavorites}>
+        Lista Favorite
       </button>
       {randomMovie && (
         <MovieCard
@@ -68,6 +84,7 @@ function App() {
           rating={randomMovie.vote_average}
           date={randomMovie.release_date}
           overview={randomMovie.overview}
+          addToFavorites={addToFavorites}
         />
       )}
     </div>

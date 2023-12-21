@@ -16,6 +16,7 @@ export default function MovieCard(props) {
                 <h3 className='rating'>Rating: <span className="span">{props.rating}</span></h3>
                 <h4 className='release-date'>An: <span className='span'>{year}</span></h4>
                 <p className='overview'><span className='overview-'>Descriere: </span>{props.overview}</p>
+                <button onClick={props.addToFavorites}>Adauga la favorite</button>
             </div>
         </div>
     </div>
