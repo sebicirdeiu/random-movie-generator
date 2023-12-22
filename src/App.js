@@ -107,7 +107,7 @@ function App() {
           <div className="generator" onClick={displayGenerator}>
             Genereaza Film
           </div>
-          <Favorites />
+          <Favorites movies={favorites} />
         </>
       )}
     </div>

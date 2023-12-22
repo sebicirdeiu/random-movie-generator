@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../App.css";
 
-export default function Favorites() {
+export default function Favorites({ movies }) {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -26,10 +26,22 @@ export default function Favorites() {
 
   return (
     <Carousel responsive={responsive}>
-      <div>Item 1</div>
-      <div>Item 2</div>
-      <div>Item 3</div>
-      <div>Item 4</div>
+      {movies.map((movie) => {
+        return (
+          <div className="movieframe" key={movie.id}>
+            <h3 className="favtitle">{movie.title}</h3>
+            <h4 className="favyear">
+              {movie.release_date !== "N/A" && movie.release_date.split("-")[0]}
+            </h4>
+            <img
+              src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
+              alt="poster"
+              className="favposter"
+            ></img>
+            <button className="delete">Sterge</button>
+          </div>
+        );
+      })}
     </Carousel>
   );
 }

@@ -203,7 +203,39 @@ select {
       justify-content: center;
       align-items: center;
       
-     
+    }
+
+    .movieframe {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      border: 3px solid black;
+      border-radius: 10px;
+      background-color: rgba(5, 5, 5, 0.75);
+      width: 330px;
+      height: 550px;
+    }
+
+    .favposter {
+      width: 230px;
+      padding: 0.5rem 0;
+      border-radius: 10px;
+    }
+
+    .favyear {
+      font-size: medium;
+    }
+
+    .delete {
+      width: 80px;
+      height: 35px;
+      border-radius: 12px;
+      background-color: antiquewhite;
+      color: red;
+      font-size: large;
     }
 
     @media (max-width: 760px) {
