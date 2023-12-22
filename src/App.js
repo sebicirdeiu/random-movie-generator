@@ -1,8 +1,9 @@
 import "./App.css";
-import MovieCard from "./MovieCard";
+import MovieCard from "./Components/MovieCard";
 import React from "react";
 import { useEffect } from "react";
-import { Form } from "./Form";
+import { Form } from "./Components/Form";
+import Favorites from "./Components/Favorites";
 
 function App() {
   //get a random number from 1 to 20 (top 400 movies)
@@ -16,6 +17,8 @@ function App() {
   const [genre, setGenre] = React.useState("");
   const [buttonIsClicked, setButtonIsClicked] = React.useState(false);
   const [favorites, setFavorites] = React.useState([]);
+  const [toggleSection, setToggleSection] = React.useState(true);
+
   //data to acess the movie API
   const options = {
     method: "GET",
@@ -62,30 +65,50 @@ function App() {
       setFavorites((prevFavorites) => [...prevFavorites, randomMovie]);
     }
   };
+
   useEffect(() => {
     console.log(favorites);
   }, [favorites]);
 
-  const displayFavorites = () => {};
+  const displayFavorites = () => {
+    setToggleSection(false);
+  };
+
+  const displayGenerator = () => {
+    setToggleSection(true);
+  };
 
   return (
     <div className="App">
-      <Form genre={genre} handleGenreChange={handleGenreChange} />
-      <button className="generate" onClick={handleClick}>
-        Genereaza
-      </button>
-      <button className="favorites" onClick={displayFavorites}>
-        Lista Favorite
-      </button>
-      {randomMovie && (
-        <MovieCard
-          image={randomMovie.poster_path}
-          title={randomMovie.title}
-          rating={randomMovie.vote_average}
-          date={randomMovie.release_date}
-          overview={randomMovie.overview}
-          addToFavorites={addToFavorites}
-        />
+      {toggleSection && (
+        <>
+          <div className="favorites" onClick={displayFavorites}>
+            Lista Favorite
+          </div>
+          <Form genre={genre} handleGenreChange={handleGenreChange} />
+          <button className="generate" onClick={handleClick}>
+            Genereaza
+          </button>
+          {randomMovie && (
+            <MovieCard
+              image={randomMovie.poster_path}
+              title={randomMovie.title}
+              rating={randomMovie.vote_average}
+              date={randomMovie.release_date}
+              overview={randomMovie.overview}
+              addToFavorites={addToFavorites}
+            />
+          )}
+        </>
+      )}
+
+      {!toggleSection && (
+        <>
+          <div className="generator" onClick={displayGenerator}>
+            Genereaza Film
+          </div>
+          <Favorites />
+        </>
       )}
     </div>
   );

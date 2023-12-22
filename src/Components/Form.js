@@ -1,5 +1,5 @@
 import React from "react";
-import { genresMap } from "./GenreMap";
+import { genresMap } from "../GenreMap";
 
 export function Form(props) {
   return (
