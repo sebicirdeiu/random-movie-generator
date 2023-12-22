@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../App.css";
 
-export default function Favorites({ movies }) {
+export default function Favorites({ movies, remove }) {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -11,15 +11,15 @@ export default function Favorites({ movies }) {
       items: 5,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1200 },
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1200, min: 800 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 800, min: 0 },
       items: 1,
     },
   };
@@ -38,7 +38,9 @@ export default function Favorites({ movies }) {
               alt="poster"
               className="favposter"
             ></img>
-            <button className="delete">Sterge</button>
+            <button className="delete" onClick={() => remove(movie)}>
+              Șterge
+            </button>
           </div>
         );
       })}

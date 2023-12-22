@@ -17,7 +17,7 @@ export default function MovieCard(props) {
           <div className="titlesection">
             <h2 className="title"> {props.title}</h2>
             <button className="addfavorite" onClick={props.addToFavorites}>
-              Adauga la Favorite
+              Adaugă la Favorite
             </button>
           </div>
           <h3 className="rating">

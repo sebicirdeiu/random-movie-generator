@@ -78,16 +78,21 @@ function App() {
     setToggleSection(true);
   };
 
+  const removeMovie = (element) => {
+    const newFavorites = favorites.filter((favorite) => favorite !== element);
+    setFavorites(newFavorites);
+  };
+
   return (
     <div className="App">
       {toggleSection && (
         <>
           <div className="favorites" onClick={displayFavorites}>
-            Lista Favorite
+            Listă Favorite
           </div>
           <Form genre={genre} handleGenreChange={handleGenreChange} />
           <button className="generate" onClick={handleClick}>
-            Genereaza
+            Generează
           </button>
           {randomMovie && (
             <MovieCard
@@ -105,9 +110,9 @@ function App() {
       {!toggleSection && (
         <>
           <div className="generator" onClick={displayGenerator}>
-            Genereaza Film
+            Generează Film
           </div>
-          <Favorites movies={favorites} />
+          <Favorites movies={favorites} remove={removeMovie} />
         </>
       )}
     </div>

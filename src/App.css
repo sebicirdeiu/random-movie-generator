@@ -215,8 +215,8 @@ select {
       border: 3px solid black;
       border-radius: 10px;
       background-color: rgba(5, 5, 5, 0.75);
-      width: 330px;
-      height: 550px;
+      width: 300px;
+      height: 500px;
     }
 
     .favposter {
@@ -308,6 +308,14 @@ select {
       .favorites {
         font-size: medium;
 
+      }
+
+      .title {
+        font-size: large;
+      }
+
+      .addfavorite {
+        font-size: medium;
       }
 
   
