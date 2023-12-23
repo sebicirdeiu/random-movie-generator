@@ -4,6 +4,7 @@ import React from "react";
 import { useEffect } from "react";
 import { Form } from "./Components/Form";
 import Favorites from "./Components/Favorites";
+import SignIn from "./Authentication/SignIn";
 
 function App() {
   //get a random number from 1 to 20 (top 400 movies)
@@ -85,36 +86,39 @@ function App() {
 
   return (
     <div className="App">
-      {toggleSection && (
-        <>
-          <div className="favorites" onClick={displayFavorites}>
-            Listă Favorite
-          </div>
-          <Form genre={genre} handleGenreChange={handleGenreChange} />
-          <button className="generate" onClick={handleClick}>
-            Generează
-          </button>
-          {randomMovie && (
-            <MovieCard
-              image={randomMovie.poster_path}
-              title={randomMovie.title}
-              rating={randomMovie.vote_average}
-              date={randomMovie.release_date}
-              overview={randomMovie.overview}
-              addToFavorites={addToFavorites}
-            />
-          )}
-        </>
-      )}
+      <>
+        {toggleSection && (
+          <>
+            <div className="favorites" onClick={displayFavorites}>
+              Listă Favorite
+            </div>
+            <Form genre={genre} handleGenreChange={handleGenreChange} />
+            <button className="generate" onClick={handleClick}>
+              Generează
+            </button>
+            {randomMovie && (
+              <MovieCard
+                image={randomMovie.poster_path}
+                title={randomMovie.title}
+                rating={randomMovie.vote_average}
+                date={randomMovie.release_date}
+                overview={randomMovie.overview}
+                addToFavorites={addToFavorites}
+              />
+            )}
+          </>
+        )}
 
-      {!toggleSection && (
-        <>
-          <div className="generator" onClick={displayGenerator}>
-            Generează Film
-          </div>
-          <Favorites movies={favorites} remove={removeMovie} />
-        </>
-      )}
+        {!toggleSection && (
+          <>
+            <div className="generator" onClick={displayGenerator}>
+              Generează Film
+            </div>
+            <SignIn />
+            <Favorites movies={favorites} remove={removeMovie} />
+          </>
+        )}
+      </>
     </div>
   );
 }
