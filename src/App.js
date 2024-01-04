@@ -4,7 +4,6 @@ import React from "react";
 import { useEffect } from "react";
 import { Form } from "./Components/Form";
 import Favorites from "./Components/Favorites";
-import SignIn from "./Authentication/SignIn";
 
 function App() {
   //get a random number from 1 to 20 (top 400 movies)
@@ -17,7 +16,11 @@ function App() {
   );
   const [genre, setGenre] = React.useState("");
   const [buttonIsClicked, setButtonIsClicked] = React.useState(false);
-  const [favorites, setFavorites] = React.useState([]);
+  const [favorites, setFavorites] = React.useState(() => {
+    // Load favorites from local storage on component mount
+    const storedFavorites = localStorage.getItem("favorites");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
   const [toggleSection, setToggleSection] = React.useState(true);
 
   //data to acess the movie API
@@ -67,8 +70,14 @@ function App() {
     }
   };
 
+  const removeMovie = (element) => {
+    const newFavorites = favorites.filter((favorite) => favorite !== element);
+    setFavorites(newFavorites);
+  };
+
+  // Save favorites to local storage whenever the favorites state changes
   useEffect(() => {
-    console.log(favorites);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   const displayFavorites = () => {
@@ -77,11 +86,6 @@ function App() {
 
   const displayGenerator = () => {
     setToggleSection(true);
-  };
-
-  const removeMovie = (element) => {
-    const newFavorites = favorites.filter((favorite) => favorite !== element);
-    setFavorites(newFavorites);
   };
 
   return (
@@ -114,7 +118,6 @@ function App() {
             <div className="generator" onClick={displayGenerator}>
               Generează Film
             </div>
-            <SignIn />
             <Favorites movies={favorites} remove={removeMovie} />
           </>
         )}

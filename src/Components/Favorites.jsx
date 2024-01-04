@@ -24,26 +24,26 @@ export default function Favorites({ movies, remove }) {
     },
   };
 
-  return (
+  return movies.length > 0 ? (
     <Carousel responsive={responsive}>
-      {movies.map((movie) => {
-        return (
-          <div className="movieframe" key={movie.id}>
-            <h3 className="favtitle">{movie.title}</h3>
-            <h4 className="favyear">
-              {movie.release_date !== "N/A" && movie.release_date.split("-")[0]}
-            </h4>
-            <img
-              src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
-              alt="poster"
-              className="favposter"
-            ></img>
-            <button className="delete" onClick={() => remove(movie)}>
-              Șterge
-            </button>
-          </div>
-        );
-      })}
+      {movies.map((movie) => (
+        <div className="movieframe" key={movie.id}>
+          <h3 className="favtitle">{movie.title}</h3>
+          <h4 className="favyear">
+            {movie.release_date !== "N/A" && movie.release_date.split("-")[0]}
+          </h4>
+          <img
+            src={"https://image.tmdb.org/t/p/original/" + movie.poster_path}
+            alt="poster"
+            className="favposter"
+          ></img>
+          <button className="delete" onClick={() => remove(movie)}>
+            Șterge
+          </button>
+        </div>
+      ))}
     </Carousel>
+  ) : (
+    <h4 className="nofaves">No movies added yet!</h4>
   );
 }
