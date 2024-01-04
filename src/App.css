@@ -172,14 +172,14 @@ select {
     color:rgb(198, 38, 2);
     cursor: pointer;
     font-size: larger;
-    border-bottom: 2px solid white
-    
+    border-bottom: 2px solid white;
   }
 
     .favorites:hover, .generator:hover {
       color: white;
       border-bottom:2px solid rgb(198, 38, 2);
     }
+
 
   .addfavorite {
     color: white;
@@ -188,6 +188,11 @@ select {
     padding: 10px 5px;
     font-size: large;
     cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .addfavorite:active {
+    transform: scale(1.1);
   }
 
   .react-multi-carousel-list {
@@ -216,7 +221,7 @@ select {
       border-radius: 10px;
       background-color: rgba(5, 5, 5, 0.75);
       width: 300px;
-      height: 480px;
+      height: 510px;
     }
 
     .favposter {
@@ -329,19 +334,19 @@ select {
       }
         
       .stats {
+        justify-self: flex-end;
         max-width: 100%;
         background-color: rgba(5, 5, 5, 0.95);
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 40px;
-        padding-bottom: 100px;
-        
-        margin-bottom: 1rem;
+        padding-bottom: 50px;
       }
       
       .generator,
       .favorites {
         font-size: medium;
+        margin-left: 8px;
 
       }
 

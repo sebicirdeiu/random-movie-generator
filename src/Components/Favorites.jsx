@@ -44,6 +44,6 @@ export default function Favorites({ movies, remove }) {
       ))}
     </Carousel>
   ) : (
-    <h4 className="nofaves">No movies added yet!</h4>
+    <h4 className="nofaves">Nu ai adăugat filme la favorite!</h4>
   );
 }
